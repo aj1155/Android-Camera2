@@ -21,6 +21,7 @@ import android.util.Log;
 import android.util.Size;
 import android.view.Surface;
 import android.view.TextureView;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import java.util.Arrays;
@@ -144,12 +145,9 @@ public class Preview extends Thread {
             Log.e(TAG,"texture is null, return");
             return;
         }
-
-
-
+        Log.e("size",mPreviewSize.getWidth()+" "+mPreviewSize.getHeight());
         texture.setDefaultBufferSize(mPreviewSize.getWidth(), mPreviewSize.getHeight());
         Surface surface = new Surface(texture);
-
         try {
             mPreviewBuilder = mCameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);
         } catch (CameraAccessException e) {
